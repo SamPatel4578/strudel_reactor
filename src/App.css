@@ -1,38 +1,383 @@
-.App {
-  text-align: center;
+/* ==== Root Variables ==== */
+:root {
+    --bg-color: #f6f8fa;
+    --surface: #ffffff;
+    --accent1: #00bcd4; /* teal */
+    --accent2: #ff66b2; /* magenta */
+    --accent-light: rgba(0, 188, 212, 0.15);
+    --text-main: #1a1a1a;
+    --text-muted: #555;
+    --border-color: #e3e7eb;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    --radius: 14px;
+    --transition: all 0.25s ease-in-out;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* ==== Page Layout ==== */
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #00bcd4 0%, #ff66b2 100%);
+    color: var(--text-main);
+    font-family: "Inter", "Roboto", "Segoe UI", Arial, sans-serif;
+    min-height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app {
+    display: grid;
+    grid-template-columns: 1.2fr 1.2fr 1fr 1fr;
+    gap: 1.5rem;
+    padding: 2rem;
+    box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* ==== Card Containers ==== */
+.card {
+    background-color: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: var(--transition);
 }
 
-.App-link {
-  color: #61dafb;
+    .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ==== Headings ==== */
+    .card h3 {
+        color: var(--accent1);
+        font-size: 1.15rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.5rem;
+    }
+
+/* ==== Textarea / Editor ==== */
+textarea {
+    width: 100%;
+    min-height: 200px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1rem;
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.95rem;
+    resize: vertical;
+    background-color: #fbfcfd;
+    transition: var(--transition);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    textarea:focus {
+        outline: none;
+        border-color: var(--accent1);
+        box-shadow: 0 0 0 3px var(--accent-light);
+    }
+
+/* ==== Buttons ==== */
+button {
+    border: 2px solid var(--accent2);
+    border-radius: var(--radius);
+    color: var(--accent2);
+    font-weight: 600;
+    background-color: var(--surface);
+    padding: 0.5rem 1.25rem;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-right: 0.5rem;
+}
+
+    button:hover {
+        background-color: var(--accent2);
+        color: #fff;
+        transform: scale(1.05);
+    }
+
+    button:active {
+        transform: scale(0.97);
+    }
+
+/* ==== Inline Button Group ==== */
+.controls-inline {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+/* ==== Strudel REPL Output ==== */
+#editor {
+    background-color: #1e1e1e;
+    color: #dcdcdc;
+    border-radius: var(--radius);
+    padding: 1rem;
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.9rem;
+    overflow-y: auto;
+    height: 400px;
+    line-height: 1.5;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.15);
+}
+
+    #editor::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    #editor::-webkit-scrollbar-thumb {
+        background: var(--accent1);
+        border-radius: 3px;
+    }
+
+/* ==== Control Panel Spacing & Dropdowns ==== */
+.control-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+    .control-section:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+    .control-section h4 {
+        color: var(--accent1);
+        font-weight: 600;
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+
+.control {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.controls-inline {
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* ==== Custom Dropdown Styling ==== */
+.custom-dropdown {
+    position: relative;
+    width: 100%;
+    margin-top: 0.75rem;
+}
+
+.dropdown-display {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 0.6rem 0.75rem;
+    background: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: var(--transition);
+}
+
+    .dropdown-display:hover {
+        box-shadow: 0 0 8px rgba(0, 188, 212, 0.25);
+    }
+
+.dropdown-list {
+    list-style: none;
+    margin: 0;
+    padding: 0.25rem 0;
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+    .dropdown-list li {
+        padding: 0.5rem 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+
+        .dropdown-list li:hover {
+            background: var(--accent-light);
+            color: var(--accent1);
+        }
+
+.caret {
+    color: var(--accent2);
+    margin-left: 0.5rem;
+}
+
+/* ==== Visualizer ==== */
+.visualizer {
+    background: linear-gradient( to bottom right, rgba(0, 188, 212, 0.05), rgba(255, 102, 178, 0.08) );
+}
+
+    .visualizer canvas {
+        width: 100%;
+        height: 200px;
+        border-radius: var(--radius);
+        background: #fff;
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    }
+
+/* ==== Responsive Layout ==== */
+@media (max-width: 1200px) {
+    .app {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .app {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    #editor {
+        height: 300px;
+    }
+}
+
+/* ==== Two-Row Layout (Equal Height Containers) ==== */
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 1.5rem;
+    gap: 1.25rem;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* --- Top Row: Editor + REPL --- */
+.top-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    flex: 1;
+    min-height: 0;
+}
+
+/* --- Bottom Row: Control Panel + Visualizer --- */
+.bottom-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    flex: 1;
+    align-items: stretch;
+    min-height: 0;
+}
+
+/* --- Card behavior --- */
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    height: 100%;
+}
+
+/* --- Preprocessor + REPL Heights --- */
+.preprocessor textarea {
+    flex-grow: 1;
+    height: 100%;
+    min-height: unset;
+    resize: none;
+    overflow-y: auto;
+}
+
+/* ==== Strudel REPL Output Container and Editor ==== */
+.repl-output {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    overflow: hidden;
+}
+
+    /* REPL black code editor */
+    .repl-output #editor {
+        flex: 1 1 auto;
+        height: 90%; /* take up most of the card height */
+        background-color: #1e1e1e;
+        color: #f0f0f0;
+        border-radius: var(--radius);
+        padding: 1rem;
+        font-family: "Roboto Mono", monospace;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        overflow-y: auto;
+        box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Keep the canvas aligned under the editor */
+    .repl-output canvas {
+        flex: 0 0 auto;
+        margin-top: 0.75rem;
+        width: 100%;
+        height: 5%;
+        border-radius: var(--radius);
+        background: #fff;
+        box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Custom scrollbar styling for Strudel editor */
+    .repl-output #editor::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .repl-output #editor::-webkit-scrollbar-thumb {
+        background: var(--accent1);
+        border-radius: 3px;
+    }
+
+
+/* --- Scroll control for smaller screens --- */
+.visualizer,
+.control-panel {
+    overflow-y: auto;
+}
+
+/* --- Responsive: stack layout --- */
+@media (max-width: 992px) {
+    .app {
+        height: auto;
+        overflow: visible;
+    }
+
+    .top-row,
+    .bottom-row {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        height: auto;
+    }
+
+    .preprocessor textarea,
+    .repl-output #editor {
+        min-height: 300px;
+    }
 }
