@@ -1,5 +1,4 @@
-﻿import React, { useState } from "react";
-
+﻿import React, { useEffect, useState } from "react";
 
 // CustomDropdown Component
 function CustomDropdown({ options, value, onChange, label }) {
@@ -42,12 +41,51 @@ function CustomDropdown({ options, value, onChange, label }) {
 // Main ControlPanel
 export default function ControlPanel({ controls, onControlChange }) {
     const [alert, setAlert] = useState(null);
+    const [lastHotkey, setLastHotkey] = useState(null);
+
+    // helper to show alerts programmatically
+    const showAlert = (message, duration = 5000) => {
+        setAlert(message);
+        if (duration > 0) {
+            setTimeout(() => setAlert(null), duration);
+        }
+    };
+
+    // Hotkey handling
+    useEffect(() => {
+        const handleHotkeys = (e) => {
+            switch (e.key) {
+                case "1":
+                    setLastHotkey("Play preset 1");
+                    onControlChange("play", true);
+                    showAlert("▶ Playing preset 1");
+                    break;
+                case "2":
+                    setLastHotkey("Stop");
+                    onControlChange("stop", true);
+                    showAlert("⏹ Playback stopped");
+                    break;
+                case "3":
+                    setLastHotkey("Reverb + Delay preset");
+                    onControlChange("preset3", true);
+                    showAlert("🌊 Loaded Reverb + Delay preset");
+                    break;
+                default:
+                    return;
+            }
+
+            setTimeout(() => setLastHotkey(null), 2500);
+        };
+
+        window.addEventListener("keydown", handleHotkeys);
+        return () => window.removeEventListener("keydown", handleHotkeys);
+    }, [onControlChange]);
 
     // Validate tempo
     const handleTempoChange = (e) => {
         const value = Number(e.target.value);
         if (value < 40 || value > 200) {
-            setAlert("⚠️ Tempo must be between 40 and 200 BPM.");
+            showAlert("⚠️ Tempo must be between 40 and 200 BPM.");
         } else {
             setAlert(null);
             onControlChange("tempo", value);
@@ -55,10 +93,22 @@ export default function ControlPanel({ controls, onControlChange }) {
     };
 
     return (
-        <div className="card control-panel">
-            <h3>Control Panel</h3>
-
-            {alert && <div className="alert">{alert}</div>}
+        <div className="control-panel">
+            {alert && (
+                <div
+                    style={{
+                        background: "rgba(255,255,0,0.1)",
+                        color: "#ffcc00",
+                        padding: "8px",
+                        borderRadius: "6px",
+                        marginBottom: "8px",
+                        fontWeight: "600",
+                        textAlign: "center",
+                    }}
+                >
+                    {alert}
+                </div>
+            )}
 
             {/* === Playback === */}
             <section className="control-section">
@@ -128,8 +178,8 @@ export default function ControlPanel({ controls, onControlChange }) {
                         { value: "piano", label: "Piano", icon: "🎹" },
                         { value: "drums", label: "Drums", icon: "🥁" },
                         { value: "synth", label: "Synth", icon: "🎛" },
-                        { value: "bass", label: "Bass", icon: "🎸" },
-                        { value: "guitar", label: "Guitar", icon: "🎵" },
+                        { value: "bass", label: "Bass", icon: "🎵" },
+                        { value: "guitar", label: "Guitar", icon: "🎸" },
                     ]}
                 />
             </section>
@@ -172,6 +222,21 @@ export default function ControlPanel({ controls, onControlChange }) {
                     • Press <b>2</b> to stop<br />
                     • Press <b>3</b> for Reverb + Delay preset
                 </p>
+                {lastHotkey && (
+                    <div
+                        style={{
+                            marginTop: "8px",
+                            padding: "6px",
+                            background: "rgba(0,255,128,0.15)",
+                            color: "#00ff99",
+                            borderRadius: "6px",
+                            textAlign: "center",
+                            fontWeight: "600",
+                        }}
+                    >
+                        🎵 {lastHotkey} triggered
+                    </div>
+                )}
             </section>
         </div>
     );
