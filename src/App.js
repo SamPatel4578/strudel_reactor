@@ -1,6 +1,6 @@
 ﻿
 // --------------------------------------------
-// Strudel + React Integration (Audio Visualizer Version)
+// Strudel + React Integration
 // --------------------------------------------
 import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
@@ -81,7 +81,7 @@ export default function App() {
         if (key === "play" && value) handlePlay();
         if (key === "stop" && value) handleStop();
 
-        // === 🎵 JSON save/load functionality ===
+        // === JSON save/load functionality ===
         if (key === "save") {
             saveSettingsToJSON(controls);
         }
@@ -90,7 +90,7 @@ export default function App() {
         }
     };
 
-    // 💾 Save current settings as JSON file
+    //  Save current settings as JSON file
     const saveSettingsToJSON = (data) => {
         const blob = new Blob([JSON.stringify(data, null, 2)], {
             type: "application/json",
@@ -103,7 +103,7 @@ export default function App() {
         URL.revokeObjectURL(url);
     };
 
-    // 📂 Load settings from JSON file
+    //  Load settings from JSON file
     const loadSettingsFromJSON = () => {
         const input = document.createElement("input");
         input.type = "file";
@@ -168,7 +168,7 @@ export default function App() {
         if (procField) procField.value = stranger_tune;
         Proc();
 
-        // 🎹 HOTKEYS SECTION
+        //  HOTKEYS SECTION
         const handleKeyDown = async (e) => {
             // prevent hotkeys while typing
             const active = document.activeElement;
