@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\tejas\\onedrive\\desktop\\webtech\\assignment 1\\strudel_reactor\\src\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\tejas\\onedrive\\desktop\\webtech\\assignment 1\\strudel_reactor\\src\\components\\controlpanel.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\components\\controlpanel.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\tejas\\onedrive\\desktop\\webtech\\assignment 1\\strudel_reactor\\src\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\tejas\\onedrive\\desktop\\webtech\\assignment 1\\strudel_reactor\\src\\components\\graph.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\components\\graph.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,54 +27,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "App.css",
-              "DocumentMoniker": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\App.css",
-              "RelativeDocumentMoniker": "src\\App.css",
-              "ToolTip": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\App.css",
-              "RelativeToolTip": "src\\App.css",
-              "ViewState": "AgIAAFcBAAAAAAAAAAAIwH8BAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-11-18T07:36:12.931Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Graph.js",
-              "DocumentMoniker": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\components\\Graph.js",
-              "RelativeDocumentMoniker": "src\\components\\Graph.js",
-              "ToolTip": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\components\\Graph.js",
-              "RelativeToolTip": "src\\components\\Graph.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-18T07:11:14.474Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "ControlPanel.js",
               "DocumentMoniker": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\components\\ControlPanel.js",
               "RelativeDocumentMoniker": "src\\components\\ControlPanel.js",
               "ToolTip": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\components\\ControlPanel.js",
               "RelativeToolTip": "src\\components\\ControlPanel.js",
-              "ViewState": "AgIAAH8AAAAAAAAAAAAQwJIAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAOgAAAAAAAAAAAAQwAMBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-18T03:58:48.989Z",
+              "WhenOpened": "2025-11-18T07:59:58.32Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "App.js",
               "DocumentMoniker": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\App.js",
               "RelativeDocumentMoniker": "src\\App.js",
               "ToolTip": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\App.js",
               "RelativeToolTip": "src\\App.js",
-              "ViewState": "AgIAAOoAAAAAAAAAAAAYwP4AAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAYwOoAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-16T09:00:31.996Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T07:46:36.907Z"
             }
           ]
         }

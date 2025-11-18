@@ -1,70 +1,141 @@
-# Getting Started with Create React App
+# Strudel Studio — README
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an interactive music live-coding environment built using React and the Strudel music engine.  
+The interface allows users to write Strudel code, preprocess it, and play it back using a set of intuitive controls.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Controls Overview (What Each Control Does)
 
-### `npm start`
+### *1. Preprocessor Editor*
+- This is the text area where users write or modify Strudel code before it is transformed.
+- *Proc*: Applies preprocessing rules to your code but does not start playback.
+- *Proc & Play*: Preprocesses the code and immediately evaluates it in the Strudel engine.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Playback Controls
 
-### `npm test`
+### *Play*
+- Starts playing the currently processed Strudel code.
+- Automatically initializes the AudioContext on the first use.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### *Stop*
+- Stops all running Strudel patterns.
 
-### `npm run build`
+### *Hotkeys*
+- *Press 1* → Play  
+- *Press 2* → Stop  
+Useful when using the application in a live or hands-free scenario.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tempo Controls
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### *BPM*
+- Sets beats per minute for the Strudel pattern.
+- Changing this updates the first line of code in your preprocessor (setcps()).
 
-### `npm run eject`
+### *Base*
+- Denominator value used in the timing calculation inside setcps(bpm/base/divisor).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### *Divisor*
+- Final component of the timing expression.
+- Changing Base or Divisor recalculates timing immediately.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Mixing Controls
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### *Volume*
+- Controls the master output level (0–100%).
+- Adjusts a Web Audio GainNode in real time.
 
-## Learn More
+### *Reverb Intensity*
+- Represents a future effects parameter.
+- Currently updates UI state but does not apply a real reverb effect unless extended.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Instrument Selector
+A dropdown menu allowing users to choose between:
+- Piano
+- Drums
+- Synth
+- Bass
+- Guitar
 
-### Code Splitting
+(Changing instruments updates UI state and is intended for future expansion of sound routing.)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Effects Selector
+Dropdown menu with:
+- None
+- Reverb
+- Delay
+- Distortion
+- Echo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+(These selections do not yet apply sonic effects but are stored for future implementation.)
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Preset Controls
 
-### Advanced Configuration
+### *Save Settings*
+- Exports the current control panel state to a .json configuration file.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### *Load Settings*
+- Loads a previously saved JSON configuration.
+- Automatically updates all UI controls based on the file contents.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Live D3 Graph (Visualizer Area)
 
-### `npm run build` fails to minify
+- Currently a placeholder area connected to an audio analyser node.
+- Intended for future visualizations (spectrum/waveform).
+- Does not display a graph yet, which is expected behavior.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## *Usage Guidelines*
+
+### *1. Audio Initialization*
+The first time you click *Play* or *Proc & Play*, the browser will activate the AudioContext.  
+This is a normal security requirement of web audio systems.
+
+---
+
+### *2. Tempo Changes Rewrite Code Automatically*
+Changing BPM, Base, or Divisor rewrites the first line of your preprocessor code.  
+If you manually remove the setcps() line, tempo controls will not function correctly.
+
+---
+
+### *3. Load Settings Requires a Valid JSON File*
+Importing anything other than a valid preset JSON will result in an error message.
+
+---
+
+### *4. The Visualizer Area Is Intentionally Empty*
+It is a placeholder and does not render visuals yet.
+
+---
+
+### *5. Effects and Instruments Are UI-Only*
+They update state but do not yet influence Strudel’s audio output.
+
+---
+
+### *6. Preprocessor Tags*
+If your code contains special placeholder tags (e.g., <p1_Radio>), preprocessing will modify them.  
+Avoid removing required placeholders if your tune depends on them.
+
+---
+
+# Demonstration Video
+
+ *Demo Video*  
+ Pls refer to the zip folder submitted on learnOnline portal to see the demonstration video.
