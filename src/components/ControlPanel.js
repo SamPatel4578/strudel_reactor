@@ -56,19 +56,14 @@ export default function ControlPanel({ controls, onControlChange }) {
         const handleHotkeys = (e) => {
             switch (e.key) {
                 case "1":
-                    setLastHotkey("Play preset 1");
+                    setLastHotkey("Play song");
                     onControlChange("play", true);
-                    showAlert("▶ Playing preset 1");
+                    showAlert("▶ Playing Song");
                     break;
                 case "2":
                     setLastHotkey("Stop");
                     onControlChange("stop", true);
                     showAlert("⏹ Playback stopped");
-                    break;
-                case "3":
-                    setLastHotkey("Reverb + Delay preset");
-                    onControlChange("preset3", true);
-                    showAlert("🌊 Loaded Reverb + Delay preset");
                     break;
                 default:
                     return;
@@ -81,14 +76,36 @@ export default function ControlPanel({ controls, onControlChange }) {
         return () => window.removeEventListener("keydown", handleHotkeys);
     }, [onControlChange]);
 
-    // Validate tempo
-    const handleTempoChange = (e) => {
+    // BPM input handler
+    const handleTempoInput = (e) => {
         const value = Number(e.target.value);
-        if (value < 40 || value > 200) {
-            showAlert("⚠️ Tempo must be between 40 and 200 BPM.");
+        if (value < 40 || value > 300) {
+            showAlert("⚠️ BPM must be between 40 and 300.");
         } else {
             setAlert(null);
             onControlChange("tempo", value);
+        }
+    };
+
+    // Base input handler (no min/max required)
+    const handleBaseInput = (e) => {
+        const value = Number(e.target.value);
+        if (value <= 0) {
+            showAlert("⚠️ Base must be greater than 0.");
+        } else {
+            setAlert(null);
+            onControlChange("tempoBase", value);
+        }
+    };
+
+    // Divisor handler
+    const handleDivisorInput = (e) => {
+        const value = Number(e.target.value);
+        if (value <= 0) {
+            showAlert("⚠️ Divisor must be greater than 0.");
+        } else {
+            setAlert(null);
+            onControlChange("tempoDivisor", value);
         }
     };
 
@@ -117,17 +134,42 @@ export default function ControlPanel({ controls, onControlChange }) {
                     <button onClick={() => onControlChange("play", true)}>Play</button>
                     <button onClick={() => onControlChange("stop", true)}>Stop</button>
                 </div>
+
+                {/* BPM INPUT */}
                 <div className="control">
                     <label>
-                        Tempo:&nbsp;
+                        BPM:  &nbsp;
                         <input
                             type="number"
                             min="40"
-                            max="200"
+                            max="300"
                             value={controls.tempo}
-                            onChange={handleTempoChange}
-                        />{" "}
-                        BPM
+                            onChange={handleTempoInput}
+                        />
+                    </label>
+                </div>
+
+                {/* ⭐ NEW: BASE INPUT */}
+                <div className="control">
+                    <label>
+                        Base:  &nbsp;
+                        <input
+                            type="number"
+                            value={controls.tempoBase}
+                            onChange={handleBaseInput}
+                        />
+                    </label>
+                </div>
+
+                {/* ⭐ NEW: DIVISOR INPUT */}
+                <div className="control">
+                    <label>
+                        Divisor:&nbsp;
+                        <input
+                            type="number"
+                            value={controls.tempoDivisor}
+                            onChange={handleDivisorInput}
+                        />
                     </label>
                 </div>
             </section>
@@ -135,6 +177,7 @@ export default function ControlPanel({ controls, onControlChange }) {
             {/* === Mixing === */}
             <section className="control-section">
                 <h4>🎚 Mixing</h4>
+
                 <div className="control">
                     <label>
                         Volume: {controls.volume}%
@@ -153,12 +196,13 @@ export default function ControlPanel({ controls, onControlChange }) {
 
                 <div className="control">
                     <label>
-                        Reverb Intensity:&nbsp;
+                        Reverb Intensity: {controls.reverbIntensity}%
                         <input
                             type="range"
                             min="0"
                             max="100"
                             step="1"
+                            value={controls.reverbIntensity}
                             onChange={(e) =>
                                 onControlChange("reverbIntensity", Number(e.target.value))
                             }
@@ -222,6 +266,7 @@ export default function ControlPanel({ controls, onControlChange }) {
                     • Press <b>2</b> to stop<br />
                     • Press <b>3</b> for Reverb + Delay preset
                 </p>
+
                 {lastHotkey && (
                     <div
                         style={{

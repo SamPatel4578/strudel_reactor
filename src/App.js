@@ -1,5 +1,4 @@
-﻿
-// --------------------------------------------
+﻿// --------------------------------------------
 // Strudel + React Integration
 // --------------------------------------------
 import React, { useEffect, useRef, useState } from "react";
@@ -52,14 +51,18 @@ export default function App() {
         play: false,
         stop: false,
         volume: 80,
-        tempo: 120,
+        tempo: 140,
+        tempoBase: 60,
+        tempoDivisor: 4,  
         instrument: "piano",
+        reverbIntensity: 0,
     });
 
     const [isPlaying, setIsPlaying] = useState(false);
     const hasRun = useRef(false);
     const [audioReady, setAudioReady] = useState(false);
 
+    // PLAY & STOP
     const handlePlay = async () => {
         if (!audioReady) {
             await initAudioOnFirstClick();
@@ -76,21 +79,28 @@ export default function App() {
         setIsPlaying(false);
     };
 
+    // CENTRAL CONTROL ROUTER
+
     const handleControlChange = (key, value) => {
         setControls((p) => ({ ...p, [key]: value }));
+
         if (key === "play" && value) handlePlay();
         if (key === "stop" && value) handleStop();
 
-        // === JSON save/load functionality ===
-        if (key === "save") {
-            saveSettingsToJSON(controls);
+        if (["tempo", "tempoBase", "tempoDivisor"].includes(key)) {
+            handleTempoUpdate(
+                key === "tempo" ? value : controls.tempo,
+                key === "tempoBase" ? value : controls.tempoBase,
+                key === "tempoDivisor" ? value : controls.tempoDivisor
+            );
         }
-        if (key === "load") {
-            loadSettingsFromJSON();
-        }
+
+        if (key === "save") saveSettingsToJSON(controls);
+        if (key === "load") loadSettingsFromJSON();
     };
 
-    //  Save current settings as JSON file
+
+    // SAVE / LOAD SETTINGS
     const saveSettingsToJSON = (data) => {
         const blob = new Blob([JSON.stringify(data, null, 2)], {
             type: "application/json",
@@ -103,7 +113,6 @@ export default function App() {
         URL.revokeObjectURL(url);
     };
 
-    //  Load settings from JSON file
     const loadSettingsFromJSON = () => {
         const input = document.createElement("input");
         input.type = "file";
@@ -129,7 +138,22 @@ export default function App() {
     };
 
 
+    // ⭐ UPDATED TEMPO LOGIC (BPM + Base + Divisor)
+    const handleTempoUpdate = (bpm, base, divisor) => {
+        const editor = document.getElementById("proc");
+        if (!editor) return;
 
+        const lines = editor.value.split("\n");
+
+        if (lines[0].trim().startsWith("setcps(")) {
+            lines[0] = `setcps(${bpm}/${base}/${divisor})`;
+        }
+
+        editor.value = lines.join("\n");
+        ProcAndPlay();
+    };
+
+    // INITIAL SETUP
     useEffect(() => {
         if (hasRun.current) return;
         console_monkey_patch();
@@ -168,9 +192,7 @@ export default function App() {
         if (procField) procField.value = stranger_tune;
         Proc();
 
-        //  HOTKEYS SECTION
         const handleKeyDown = async (e) => {
-            // prevent hotkeys while typing
             const active = document.activeElement;
             if (
                 active &&
@@ -195,20 +217,6 @@ export default function App() {
                     setIsPlaying(false);
                     break;
 
-                case "3":
-                    if (!audioReady) {
-                        await initAudioOnFirstClick();
-                        setAudioReady(true);
-                    }
-                    if (globalEditor) {
-                        const presetCode = `"bd sn" # gain 0.8 # room 0.7 # delay 0.3`;
-                        globalEditor.setCode(presetCode);
-                        globalEditor.evaluate();
-                        setControls((p) => ({ ...p, play: true, stop: false }));
-                        setIsPlaying(true);
-                    }
-                    break;
-
                 default:
                     break;
             }
@@ -218,7 +226,6 @@ export default function App() {
         return () => window.removeEventListener("keydown", handleKeyDown);
     }, [audioReady]);
 
-
     return (
         <>
             <h1 className="header text-center mt-4 text-white fw-bolder">
@@ -226,7 +233,6 @@ export default function App() {
             </h1>
 
             <div className="app">
-                {/* === TOP SECTION === */}
                 <div className="top-row">
                     <div className="card preprocessor">
                         <h3>Preprocessor Editor</h3>
@@ -254,7 +260,6 @@ export default function App() {
                     </div>
                 </div>
 
-                {/* === BOTTOM SECTION === */}
                 <div className="bottom-row">
                     <div className="card repl-output">
                         <h3>Strudel REPL Output</h3>
@@ -270,5 +275,3 @@ export default function App() {
         </>
     );
 }
-
-

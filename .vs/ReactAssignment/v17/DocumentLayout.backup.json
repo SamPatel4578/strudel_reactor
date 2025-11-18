@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\tejas\\onedrive\\desktop\\webtech\\assignment 1\\strudel_reactor\\src\\tunes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\tunes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\tejas\\onedrive\\desktop\\webtech\\assignment 1\\strudel_reactor\\src\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\tejas\\onedrive\\desktop\\webtech\\assignment 1\\strudel_reactor\\src\\components\\visualizer.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\components\\visualizer.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\tejas\\onedrive\\desktop\\webtech\\assignment 1\\strudel_reactor\\src\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\tejas\\onedrive\\desktop\\webtech\\assignment 1\\strudel_reactor\\src\\components\\controlpanel.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\components\\controlpanel.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +18,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "App.js",
-              "DocumentMoniker": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\App.js",
-              "RelativeDocumentMoniker": "src\\App.js",
-              "ToolTip": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\App.js",
-              "RelativeToolTip": "src\\App.js",
-              "ViewState": "AgIAACgAAAAAAAAAAAAQwBQAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-05T02:32:22.937Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "App.css",
-              "DocumentMoniker": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\App.css",
-              "RelativeDocumentMoniker": "src\\App.css",
-              "ToolTip": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\App.css",
-              "RelativeToolTip": "src\\App.css",
-              "ViewState": "AgIAAEEBAAAAAAAAAAAYwHkBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-11-06T00:11:22.763Z",
+              "DocumentIndex": 0,
+              "Title": "tunes.js",
+              "DocumentMoniker": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\tunes.js",
+              "RelativeDocumentMoniker": "src\\tunes.js",
+              "ToolTip": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\tunes.js",
+              "RelativeToolTip": "src\\tunes.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGMAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-18T03:41:00.503Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Visualizer.js",
-              "DocumentMoniker": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\components\\Visualizer.js",
-              "RelativeDocumentMoniker": "src\\components\\Visualizer.js",
-              "ToolTip": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\components\\Visualizer.js",
-              "RelativeToolTip": "src\\components\\Visualizer.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAOAAAAAAAAAA==",
+              "Title": "App.js",
+              "DocumentMoniker": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\App.js",
+              "RelativeDocumentMoniker": "src\\App.js",
+              "ToolTip": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\App.js",
+              "RelativeToolTip": "src\\App.js",
+              "ViewState": "AgIAAPEAAAAAAAAAAAAAABIBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-05T23:48:27.412Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ControlPanel.js",
-              "DocumentMoniker": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\components\\ControlPanel.js",
-              "RelativeDocumentMoniker": "src\\components\\ControlPanel.js",
-              "ToolTip": "C:\\Users\\tejas\\OneDrive\\Desktop\\WebTech\\Assignment 1\\strudel_reactor\\src\\components\\ControlPanel.js",
-              "RelativeToolTip": "src\\components\\ControlPanel.js",
-              "ViewState": "AgIAAMkAAAAAAAAAAAAmwPMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-04T03:48:13.69Z",
+              "WhenOpened": "2025-11-16T09:00:31.996Z",
               "EditorCaption": ""
             }
           ]
