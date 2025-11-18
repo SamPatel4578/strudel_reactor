@@ -111,7 +111,7 @@ button {
 
 /* ==== Strudel REPL Output ==== */
 #editor {
-    background-color: #1e1e1e;
+    background-color: black;
     color: #dcdcdc;
     border-radius: var(--radius);
     padding: 1rem;
@@ -124,7 +124,7 @@ button {
 }
 
     #editor::-webkit-scrollbar {
-        width: 6px;
+        width: 3px;
     }
 
     #editor::-webkit-scrollbar-thumb {
@@ -308,6 +308,15 @@ button {
     overflow-y: auto;
 }
 
+.preprocessor textarea::-webkit-scrollbar {
+    width: 6px;
+}
+
+.preprocessor textarea::-webkit-scrollbar-thumb {
+    background: var(--accent1);
+    border-radius: 3px;
+}
+
 /* ==== Strudel REPL Output Container and Editor ==== */
 .repl-output {
     display: flex;
@@ -321,7 +330,7 @@ button {
     .repl-output #editor {
         flex: 1 1 auto;
         height: 90%; /* take up most of the card height */
-        background-color: #1e1e1e;
+        background-color: black;
         color: #f0f0f0;
         border-radius: var(--radius);
         padding: 1rem;
@@ -339,7 +348,7 @@ button {
         width: 100%;
         height: 5%;
         border-radius: var(--radius);
-        background: #fff;
+        background: black;
         box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
     }
 
@@ -358,6 +367,14 @@ button {
 .visualizer,
 .control-panel {
     overflow-y: auto;
+}
+.control-panel ::-webkit-scrollbar {
+    width: 6px;
+}
+
+.control-panel::-webkit-scrollbar-thumb {
+    background: var(--accent1);
+    border-radius: 3px;
 }
 
 /* --- Responsive: stack layout --- */

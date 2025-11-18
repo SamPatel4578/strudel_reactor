@@ -58,12 +58,12 @@ export default function ControlPanel({ controls, onControlChange }) {
                 case "1":
                     setLastHotkey("Play song");
                     onControlChange("play", true);
-                    showAlert("▶ Playing Song");
+                    showAlert("Playing Song");
                     break;
                 case "2":
                     setLastHotkey("Stop");
                     onControlChange("stop", true);
-                    showAlert("⏹ Playback stopped");
+                    showAlert("Playback stopped");
                     break;
                 default:
                     return;
@@ -80,7 +80,7 @@ export default function ControlPanel({ controls, onControlChange }) {
     const handleTempoInput = (e) => {
         const value = Number(e.target.value);
         if (value < 40 || value > 300) {
-            showAlert("⚠️ BPM must be between 40 and 300.");
+            showAlert("BPM must be between 40 and 300.");
         } else {
             setAlert(null);
             onControlChange("tempo", value);
@@ -91,7 +91,7 @@ export default function ControlPanel({ controls, onControlChange }) {
     const handleBaseInput = (e) => {
         const value = Number(e.target.value);
         if (value <= 0) {
-            showAlert("⚠️ Base must be greater than 0.");
+            showAlert("Base must be greater than 0.");
         } else {
             setAlert(null);
             onControlChange("tempoBase", value);
@@ -102,7 +102,7 @@ export default function ControlPanel({ controls, onControlChange }) {
     const handleDivisorInput = (e) => {
         const value = Number(e.target.value);
         if (value <= 0) {
-            showAlert("⚠️ Divisor must be greater than 0.");
+            showAlert("Divisor must be greater than 0.");
         } else {
             setAlert(null);
             onControlChange("tempoDivisor", value);
@@ -149,7 +149,7 @@ export default function ControlPanel({ controls, onControlChange }) {
                     </label>
                 </div>
 
-                {/* ⭐ NEW: BASE INPUT */}
+                {/* BASE INPUT */}
                 <div className="control">
                     <label>
                         Base:  &nbsp;
@@ -161,7 +161,7 @@ export default function ControlPanel({ controls, onControlChange }) {
                     </label>
                 </div>
 
-                {/* ⭐ NEW: DIVISOR INPUT */}
+                {/* DIVISOR INPUT */}
                 <div className="control">
                     <label>
                         Divisor:&nbsp;
@@ -262,9 +262,8 @@ export default function ControlPanel({ controls, onControlChange }) {
             <section className="control-section">
                 <h4>⌨️ Hotkeys</h4>
                 <p className="hotkey-info">
-                    • Press <b>1</b> to play preset 1<br />
+                    • Press <b>1</b> to play<br />
                     • Press <b>2</b> to stop<br />
-                    • Press <b>3</b> for Reverb + Delay preset
                 </p>
 
                 {lastHotkey && (

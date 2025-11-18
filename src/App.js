@@ -80,7 +80,6 @@ export default function App() {
     };
 
     // CENTRAL CONTROL ROUTER
-
     const handleControlChange = (key, value) => {
         setControls((p) => ({ ...p, [key]: value }));
 
@@ -128,7 +127,7 @@ export default function App() {
                     const json = JSON.parse(event.target.result);
                     setControls((prev) => ({ ...prev, ...json }));
                 } catch (err) {
-                    alert("⚠️ Invalid JSON file.");
+                    alert("Invalid JSON file.");
                 }
             };
             reader.readAsText(file);
@@ -138,7 +137,7 @@ export default function App() {
     };
 
 
-    // ⭐ UPDATED TEMPO LOGIC (BPM + Base + Divisor)
+    // TEMPO LOGIC (BPM + Base + Divisor)
     const handleTempoUpdate = (bpm, base, divisor) => {
         const editor = document.getElementById("proc");
         if (!editor) return;
@@ -153,7 +152,6 @@ export default function App() {
         ProcAndPlay();
     };
 
-    // INITIAL SETUP
     useEffect(() => {
         if (hasRun.current) return;
         console_monkey_patch();
