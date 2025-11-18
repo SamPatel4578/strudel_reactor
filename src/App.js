@@ -17,7 +17,7 @@ import { stranger_tune } from "./tunes";
 import console_monkey_patch from "./console-monkey-patch";
 
 import ControlPanel from "./components/ControlPanel";
-import Visualizer from "./components/Visualizer";
+import Graph from "./components/Graph";
 
 let globalEditor = null;
 let gainNode = null;
@@ -163,7 +163,7 @@ export default function App() {
         gainNode = ctx.createGain();
         gainNode.gain.value = controls.volume / 100;
         analyser = ctx.createAnalyser();
-        analyser.fftSize = 64;
+        analyser.fftSize = 128;
         gainNode.connect(analyser);
         analyser.connect(ctx.destination);
 
@@ -234,9 +234,9 @@ export default function App() {
 
             <div className="app">
                 <div className="top-row">
-                    <div className="card preprocessor">
+                    <div className="card preprocessor bg-black ">
                         <h3>Preprocessor Editor</h3>
-                        <textarea id="proc" className="form-control" rows="15" />
+                        <textarea id="proc" className="form-control bg-black text-white border-black" rows="15" />
                         <div className="controls-inline">
                             <button
                                 onClick={async () => {
@@ -251,7 +251,7 @@ export default function App() {
                         </div>
                     </div>
 
-                    <div className="card control-panel">
+                    <div className="card control-panel bg-black text-white">
                         <h3>Control Panel</h3>
                         <ControlPanel
                             controls={controls}
@@ -261,14 +261,14 @@ export default function App() {
                 </div>
 
                 <div className="bottom-row">
-                    <div className="card repl-output">
+                    <div className="card repl-output bg-black">
                         <h3>Strudel REPL Output</h3>
                         <div id="editor" />
                     </div>
 
-                    <div className="card visualizer">
+                    <div className="card visualizer bg-black">
                         <h3>Live D3 Graph</h3>
-                        <Visualizer analyser={analyser} isPlaying={isPlaying} />
+                        <Graph analyser={analyser} isPlaying={isPlaying} />
                     </div>
                 </div>
             </div>
